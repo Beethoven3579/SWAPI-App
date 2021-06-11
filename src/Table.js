@@ -20,7 +20,7 @@ class Table extends React.Component {
         .catch(error => {
           console.log(error);
         });
-      axios.get('https://swapi.dev/api/planets/1')
+        axios.get('https://swapi.dev/api/planets/1')
         .then(response => {
           console.log(response)
            this.setState({homeworld: response.data})
@@ -29,7 +29,7 @@ class Table extends React.Component {
           console.log(error);
         });
       
-      axios.get('https://swapi.dev/api/species/1')
+        axios.get('https://swapi.dev/api/species/1')
         .then(response => {
           console.log(response)
            this.setState({species: response.data})
@@ -55,15 +55,17 @@ class Table extends React.Component {
                             <th>Species</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <th>{character.name} </th>
-                        <th>{character.birth_year}</th>
-                        <th>{character.mass} </th>
-                        <th>{character.height}</th>
-                        <th>{homeworld.name}</th>
-                        <th>{species.classification}</th>
+                    <tbody >
+                        <tr className="table-light">
+                            <th>{character.name} </th>
+                            <th>{character.birth_year}</th>
+                            <th>{character.mass} </th>
+                            <th>{character.height}</th>
+                            <th>{homeworld.name}</th>
+                            <th>{species.classification}</th>
+                        </tr>
                     </tbody>
-             </table>
+                </table>
            </div>
          )
       }  
