@@ -27,8 +27,9 @@ useEffect(() => {
 },[]);
       
          return (
-           <div><p>Search goes here</p>
            <div>
+           <div>
+             <label>Search Characters :</label>
              <input type="search"></input>
              <button className="btn btn-primary">Search</button>
            </div>
