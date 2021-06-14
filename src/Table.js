@@ -25,36 +25,35 @@ useEffect(() => {
     console.log(error);
   });
 },[]);
-      
-         return (
-           <div>
-           <div>
-             <label>Search Characters :</label>
-             <input type="search"></input>
-             <button className="btn btn-primary">Search</button>
-           </div>
+    return (
+      <div>
+        <div>
+          <label>Search Characters :</label>
+            <input type="search"></input>
+             <button className="btn-sm btn-warning">Search</button>
+          </div>
                <table className="table">
-                    <thead className="table table-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Birth Year</th>
-                            <th>Mass</th>
-                            <th>Height</th>
-                            <th>Home World</th>
-                            <th>Species</th>
-                        </tr>
-                    </thead>
+                  <thead className="table table-dark">
+                    <tr>
+                      <th>Name</th>
+                        <th>Birth Year</th>
+                        <th>Mass</th>
+                        <th>Height</th>
+                        <th>Home World</th>
+                        <th>Species</th>
+                    </tr>
+                  </thead>
                     <tbody >
-                        <tr className="table-light">
-                            <th>{characters.name} </th>
-                            <th>{characters.birth_year}</th>
-                            <th>{characters.mass} </th>
-                            <th>{characters.height}</th>
-                            <th>{planets.name}</th>
-                            <th>{species.name}</th>
-                        </tr>
+                      <tr className="table-light">
+                        <th>{characters.name} </th>
+                        <th>{characters.birth_year}</th>
+                        <th>{characters.mass} </th>
+                        <th>{characters.height}</th>
+                        <th>{planets.name}</th>
+                        <th>{species.name}</th>
+                      </tr>
                     </tbody>
-                </table>
+              </table>
            </div>
          )
         
