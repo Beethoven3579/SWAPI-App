@@ -3,27 +3,30 @@ import axios from 'axios'
 
 const Table = () => {
     
-  const [characters, setCharacter] = useState([{}]);
-  const [planets, setPlanets] = useState([{}]);
-  const [species, setSpecies] = useState([{}]);
+  const [characters, setCharacter] = useState([]);
+  // const [planets, setPlanets] = useState([]);
+  // const [species, setSpecies] = useState([]);
 
-
+const allCharacterPages = [
+        'https://swapi.dev/api/people/?page=1',
+        'https://swapi.dev/api/people/?page=2',
+        'https://swapi.dev/api/people/?page=3',
+        'https://swapi.dev/api/people/?page=4',
+        'https://swapi.dev/api/people/?page=5',
+        'https://swapi.dev/api/people/?page=6',
+        'https://swapi.dev/api/people/?page=7',
+        'https://swapi.dev/api/people/?page=8',
+        'https://swapi.dev/api/people/?page=9',
+]
 useEffect(() => {
-  axios.get('https://swapi.dev/api/people/1')
-  .then(response => {
-    setCharacter(response.data)
-  })
-  axios.get('https://swapi.dev/api/planets/1')
-  .then(response => {
-      setPlanets(response.data)
-  })
-  axios.get('https://swapi.dev/api/species/1')
-  .then(response => {
-      setSpecies(response.data)
+  axios.get('https://swapi.dev/api/people/').then(response => {
+    const characterData = response.data
+    setCharacter(characterData.results)
   })
   .catch(error => {
     console.log(error);
   });
+
 },[]);
     return (
       <div>
@@ -44,14 +47,16 @@ useEffect(() => {
                     </tr>
                   </thead>
                     <tbody >
+                      {characters.map((character) => (
                       <tr className="table-light">
-                        <th>{characters.name} </th>
-                        <th>{characters.birth_year}</th>
-                        <th>{characters.mass} </th>
-                        <th>{characters.height}</th>
-                        <th>{planets.name}</th>
-                        <th>{species.name}</th>
+                        <th>{character.name} </th>
+                        <th>{character.birth_year}</th>
+                        <th>{character.mass} </th>
+                        <th>{character.height}</th>
+                        <th>{character.homeworld}</th>
+                        <th>{character.species == '' ? "Humanoid" : "Droid"}</th>
                       </tr>
+                      ))}
                     </tbody>
               </table>
            </div>
