@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+
 const Table = () => {
     
   const [characters, setCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [species, setSpecies] = useState([]);
+
 
 const isLoadingQuotes = [
   "Let the wookie win...",
@@ -18,7 +19,7 @@ const isLoadingQuotes = [
 ]
 
 useEffect(() => {
-  axios.get('https://swapi.dev/api/people/').then(response => {
+  axios.get(`https://swapi.dev/api/people/`).then(response => {
     const characterData = response.data
     setCharacter(characterData.results)
     console.log(characterData)
@@ -31,11 +32,6 @@ useEffect(() => {
 },[]);
     return (
       <div>
-        <div>
-          <label>Search Characters :</label>
-            <input type="search"></input>
-             <button className="btn-sm btn-warning">Search</button>
-          </div>
                <table className="table">
                   <thead className="table table-dark">
                     <tr>
@@ -62,8 +58,7 @@ useEffect(() => {
               </table>
               {isLoading ?  <h1>{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
            </div>
-         )
-        
+         )       
 }
 
 export default Table
