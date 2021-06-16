@@ -13,9 +13,9 @@ const isLoadingQuotes = [
   "That's no moon, its a space station...",
   "Shut him up or shut him down...",
   "May the force be with you, always...",
-  "When 900 years old you reach, look as good you will not hmmmm?....",
+  "When 900 years old you reach, look as good you will not, hmmmm?....",
   "Trust your feelings...",
-  "OOO Tini!!!!!....",
+  "OOO Tini!!!!!...",
 ]
 
 useEffect(() => {
@@ -29,7 +29,6 @@ useEffect(() => {
   .catch(error => {
     console.log(error);
   });
-
 },[]);
     return (
       <div>
@@ -52,18 +51,16 @@ useEffect(() => {
                         <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
-                        {axios.get(character.homeworld).then(response => {
+                        {/* {axios.get(character.homeworld).then(response => {
                           const planets = response.data
                           console.log(planets.name)
-                        })}
+                        })} */}
                         <th>{character.species == '' ? "Humanoid" : "Droid"}</th>
                       </tr>
-                      
                       ))}
-                      
                     </tbody>
               </table>
-              {isLoading ?  <h1>{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
+              {isLoading ?  <h1 id="loadingQuote">{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
            </div>
          )       
 }

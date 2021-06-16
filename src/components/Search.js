@@ -5,20 +5,29 @@ const Search = () => {
     
     console.log("Text", text)
     return (
-        <div>
-        <section className="search">
+    <div className="container">
         <form>
-          <label>Search Characters :</label>
-            <input 
-                type="text"  
-                className="form-control"
-                placeholder="Character Search"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                />
-             <button className="btn-sm btn-warning">Search</button>
+
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Search for Characters :</label>
+            <div className="col-sm-6">
+                <input 
+                    type="text"  
+                    className="form-control"
+                    placeholder="Han Solo etc..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-sm-6 offset-sm-3">
+                    <button className="btn btn-primary">Search</button>
+                </div>
+             </div>
           </form>
-        </section>
+       
         </div>
     )
 }
