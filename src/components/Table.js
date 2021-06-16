@@ -24,6 +24,7 @@ useEffect(() => {
     setCharacter(characterData.results)
     console.log(characterData)
     setIsLoading(false)
+   
   })
   .catch(error => {
     console.log(error);
@@ -48,12 +49,18 @@ useEffect(() => {
                       <tr className="table-light">
                         <th>{character.name} </th>
                         <th>{character.birth_year}</th>
-                        <th>{character.mass + " Kg"} </th>
+                        <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
+                        {axios.get(character.homeworld).then(response => {
+                          const planets = response.data
+                          console.log(planets.name)
+                        })}
                         <th>{character.species == '' ? "Humanoid" : "Droid"}</th>
                       </tr>
+                      
                       ))}
+                      
                     </tbody>
               </table>
               {isLoading ?  <h1>{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}

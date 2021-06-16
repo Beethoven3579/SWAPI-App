@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 
 const Search = () => {
     const [text, setText] = useState('')
-
+    
+    console.log("Text", text)
     return (
         <div>
-             <section className="search">
+        <section className="search">
         <form>
           <label>Search Characters :</label>
             <input 
