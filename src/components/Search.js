@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 const Search = () => {
     const [text, setText] = useState('')
     
-    console.log("Text", text)
+    // console.log("Text", text)
+
     return (
     <div className="container">
         <form>

@@ -20,8 +20,8 @@ const isLoadingQuotes = [
 
 useEffect(() => {
   axios.get(`https://swapi.dev/api/people/`).then(response => {
-    const characterData = response.data
-    setCharacter(characterData.results)
+    const characterData = response.data.results
+    setCharacter(characterData)
     console.log(characterData)
     setIsLoading(false)
    
@@ -32,18 +32,19 @@ useEffect(() => {
 },[]);
     return (
       <div>
-               <table className="table">
-                  <thead className="table table-dark">
-                    <tr>
-                      <th>Name</th>
-                        <th>Birth Year</th>
-                        <th>Mass</th>
-                        <th>Height</th>
-                        <th>Home World</th>
-                        <th>Species</th>
+          <table className="table">
+              <thead className="table table-dark">
+                <tr>
+                  <th>Name</th>
+                    <th>Birth Year</th>
+                    <th>Mass</th>
+                    <th>Height</th>
+                    <th>Home World</th>
+                    <th>Species</th>
                     </tr>
-                  </thead>
-                    <tbody >
+                </thead>
+
+                    <tbody>
                       {characters.map((character) => (
                       <tr className="table-light">
                         <th>{character.name} </th>
@@ -51,14 +52,11 @@ useEffect(() => {
                         <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
-                        {/* {axios.get(character.homeworld).then(response => {
-                          const planets = response.data
-                          console.log(planets.name)
-                        })} */}
                         <th>{character.species == '' ? "Humanoid" : "Droid"}</th>
                       </tr>
                       ))}
                     </tbody>
+
               </table>
               {isLoading ?  <h1 id="loadingQuote">{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
            </div>

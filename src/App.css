@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-
-/* * {
+* {
   background: url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1018473934%2F0x0.jpg%3Ffit%3Dscale)
-} */
+}
 
 #heading, #title, .table, #loadingQuote {
   text-align: center;
+  color: yellow;
 }
 
 #title{
@@ -14,8 +14,11 @@
 
 .container{
   margin-top: 20px;
+  color:yellow;
 }
-
+th {
+  color:yellow;
+}
 button {
   margin-top:20px;
   margin-bottom: 20px;
