@@ -14,7 +14,9 @@ body {
 #heading, #title, .table, #loadingQuote {
   text-align: center;
 }
-
+#heading {
+  color:rgb(22, 230, 230); 
+}
 #title{
   font-family: 'Staatliches', cursive;
 }
@@ -22,8 +24,6 @@ body {
 .container{
   margin-top: 20px;
 }
-
-
 
 button {
   margin-top:20px;

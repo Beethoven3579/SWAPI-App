@@ -25,7 +25,7 @@ useEffect(() => {
     const characterData = response.data.results;
       characterData.forEach((item) => {
         const homePlanet = axios.get(item.homeworld);
-        console.log(homePlanet)  
+        console.log("Planets", homePlanet)  
         setCharacter(characterData, homePlanet)
     })
     

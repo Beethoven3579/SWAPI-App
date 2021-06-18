@@ -10,12 +10,12 @@ const Search = () => {
         <form>
 
         <div className="form-group row">
-          <label id="search-label" className="col-sm-3 col-form-label text-warning">Search For Characters :</label>
+          <label id="search-label" className="col-sm-3 col-form-label text-warning">Find the Chosen Ones : </label>
             <div className="col-sm-6">
                 <input 
                     type="text"  
                     className="form-control"
-                    placeholder="Han Solo etc..."
+                    placeholder="Keyword..."
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     />
