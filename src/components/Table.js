@@ -23,13 +23,15 @@ useEffect(() => {
   const fetchCharacterData = async () => {
     const response = await axios(`https://swapi.dev/api/people/`);
     const characterData = response.data.results;
-    characterData.forEach(item => {
-     const homePlanet = axios.get(item.homeworld)
-     console.log(homePlanet)
-    setCharacter(characterData, homePlanet);
+      characterData.forEach((item) => {
+        const homePlanet = axios.get(item.homeworld);
+        console.log(homePlanet)  
+        setCharacter(characterData, homePlanet)
     })
+    
     setIsLoading(false)
   }
+  
   fetchCharacterData()
 },[]);
     return (

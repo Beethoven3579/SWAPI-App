@@ -10,7 +10,7 @@ const Search = () => {
         <form>
 
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label text-warning">Search for Characters :</label>
+          <label id="search-label" className="col-sm-3 col-form-label text-warning">Search For Characters :</label>
             <div className="col-sm-6">
                 <input 
                     type="text"  

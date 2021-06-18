@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+* {
+  border: border-box;
+  margin: 0; 
+}
+
 body {
   background: url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1018473934%2F0x0.jpg%3Ffit%3Dscale);
   background-repeat: no-repeat;
@@ -17,6 +22,8 @@ body {
 .container{
   margin-top: 20px;
 }
+
+
 
 button {
   margin-top:20px;
