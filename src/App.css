@@ -8,7 +8,6 @@ body {
 
 #heading, #title, .table, #loadingQuote {
   text-align: center;
-  color: yellow;
 }
 
 #title{
@@ -17,11 +16,6 @@ body {
 
 .container{
   margin-top: 20px;
-  color:yellow;
-}
-
-th {
-  color:yellow;
 }
 
 button {

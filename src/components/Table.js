@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 const Table = () => {
-  let pageNum = 2;  
+   
   const [characters, setCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,9 +21,13 @@ const isLoadingQuotes = [
 useEffect(() => {
    
   const fetchCharacterData = async () => {
-    const result = await axios(`https://swapi.dev/api/people/?page=${pageNum}`)
-    const characterData = result.data.results
-    setCharacter(characterData)
+    const response = await axios(`https://swapi.dev/api/people/`);
+    const characterData = response.data.results;
+    characterData.forEach(item => {
+     const homePlanet = axios.get(item.homeworld)
+     console.log(homePlanet)
+    setCharacter(characterData, homePlanet);
+    })
     setIsLoading(false)
   }
   fetchCharacterData()
@@ -32,8 +36,8 @@ useEffect(() => {
       <div>
           <table className="table">
               <thead className="table table-dark">
-                <tr>
-                  <th>Name</th>
+                <tr className="text-warning">
+                    <th>Name</th>
                     <th>Birth Year</th>
                     <th>Mass</th>
                     <th>Height</th>
@@ -42,15 +46,15 @@ useEffect(() => {
                     </tr>
                 </thead>
 
-                    <tbody>
+                    <tbody >
                       {characters.map((character) => (
-                      <tr className="table-dark">
+                      <tr className="table-dark text-warning">
                         <th>{character.name} </th>
                         <th>{character.birth_year}</th>
                         <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
-                        <th>{character.species == '' ? "Humanoid" : "Droid"}</th>
+                        <th>{character.species == '' ? "Humanoid" : "Other"}</th>
                       </tr>
                       ))}
                     </tbody>
