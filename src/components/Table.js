@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 const Table = () => {
-    
+  let pageNum = 2;  
   const [characters, setCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,16 +19,14 @@ const isLoadingQuotes = [
 ]
 
 useEffect(() => {
-  axios.get(`https://swapi.dev/api/people/`).then(response => {
-    const characterData = response.data.results
-    setCharacter(characterData)
-    console.log(characterData)
-    setIsLoading(false)
    
-  })
-  .catch(error => {
-    console.log(error);
-  });
+  const fetchCharacterData = async () => {
+    const result = await axios(`https://swapi.dev/api/people/?page=${pageNum}`)
+    const characterData = result.data.results
+    setCharacter(characterData)
+    setIsLoading(false)
+  }
+  fetchCharacterData()
 },[]);
     return (
       <div>
@@ -46,7 +44,7 @@ useEffect(() => {
 
                     <tbody>
                       {characters.map((character) => (
-                      <tr className="table-light">
+                      <tr className="table-dark">
                         <th>{character.name} </th>
                         <th>{character.birth_year}</th>
                         <th>{character.mass + " kg"} </th>
