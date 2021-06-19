@@ -62,7 +62,7 @@ useEffect(() => {
                     </tbody>
 
               </table>
-              {isLoading ?  <h1 id="loadingQuote">{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
+              {isLoading ?  <h1 className="text-warning" id="loadingQuote">{isLoadingQuotes[Math.floor(Math.random() * isLoadingQuotes.length)]}</h1> : false}
            </div>
          )       
 }

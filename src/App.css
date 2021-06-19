@@ -16,6 +16,7 @@ body {
 }
 #heading {
   color:rgb(22, 230, 230); 
+  font-weight:lighter;
 }
 #title{
   font-family: 'Staatliches', cursive;
