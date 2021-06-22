@@ -6,6 +6,7 @@ const Table = () => {
    
   const [characters, setCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [pageNumber, setPageNumber] = useState('')
 
 
 const isLoadingQuotes = [
@@ -22,18 +23,35 @@ useEffect(() => {
    
   const fetchCharacterData = async () => {
     const response = await axios(`https://swapi.dev/api/people/`);
+    console.log(response)
     const characterData = response.data.results;
-      characterData.forEach((item) => {
-        const homePlanet = axios.get(item.homeworld);
-        console.log("Planets", homePlanet)  
-        setCharacter(characterData, homePlanet)
+      characterData.forEach( async (character) => {
+        character.homeworld = await getHomeWorld(character);
+        setCharacter(characters => [...characters, character])
+    }) 
+    characterData.forEach( async (character) => {
+      character.species = await getSpeciesName(character); 
+      console.log("character", character)
+      setCharacter(characters => [...characters, character])
+
     })
-    
     setIsLoading(false)
   }
   
   fetchCharacterData()
 },[]);
+
+const getHomeWorld = async (character) => {
+  character.homeworld = await axios(character.homeworld);
+  return character.homeworld.data.name
+}
+const getSpeciesName = async (character) => {
+  character.species = await axios(character.species);
+  return character.species.data.name
+  
+}
+
+
     return (
       <div>
           <table className="table">
@@ -56,7 +74,7 @@ useEffect(() => {
                         <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
-                        <th>{character.species == '' ? "Humanoid" : "Other"}</th>
+                        <th>{character.species == '' ? "Humanoid" : character.species}</th>
                       </tr>
                       ))}
                     </tbody>
