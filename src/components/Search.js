@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Search = () => {
     const [text, setText] = useState('')
     
-    // console.log("Text", text)
+    useEffect(() => {
+   
+    const searchCharacter = async () => {
+      const response = await axios.get(`https://swapi.dev/api/people/?search=${text}`);
+      console.log(response)
+    };
+
+    searchCharacter()
+
+  });
 
     return (
     <div className="container">

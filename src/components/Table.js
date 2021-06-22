@@ -27,14 +27,9 @@ useEffect(() => {
     const characterData = response.data.results;
       characterData.forEach( async (character) => {
         character.homeworld = await getHomeWorld(character);
+        character.species = await getSpeciesName(character);
         setCharacter(characters => [...characters, character])
     }) 
-    characterData.forEach( async (character) => {
-      character.species = await getSpeciesName(character); 
-      console.log("character", character)
-      setCharacter(characters => [...characters, character])
-
-    })
     setIsLoading(false)
   }
   
@@ -42,13 +37,18 @@ useEffect(() => {
 },[]);
 
 const getHomeWorld = async (character) => {
-  character.homeworld = await axios(character.homeworld);
+  character.homeworld = await axios.get(character.homeworld);
   return character.homeworld.data.name
 }
+
 const getSpeciesName = async (character) => {
-  character.species = await axios(character.species);
+  if (character.species.length === 0) {
+    return (character.species = "Humaniod");
+  }
+  else{
+  character.species = await axios.get(character.species);
   return character.species.data.name
-  
+  }
 }
 
 
@@ -74,7 +74,7 @@ const getSpeciesName = async (character) => {
                         <th>{character.mass + " kg"} </th>
                         <th>{character.height + " cm"}</th>
                         <th>{character.homeworld}</th>
-                        <th>{character.species == '' ? "Humanoid" : character.species}</th>
+                        <th>{character.species}</th>
                       </tr>
                       ))}
                     </tbody>
