@@ -6,23 +6,22 @@ const Table = () => {
    
   const [characters, setCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [pageNumber, setPageNumber] = useState('')
-
-
-const isLoadingQuotes = [
-  "Let the wookie win...",
-  "That's no moon, its a space station...",
-  "Shut him up or shut him down...",
-  "May the force be with you, always...",
-  "When 900 years old you reach, look as good you will not, hmmmm?....",
-  "Trust your feelings...",
-  "OOO Tini!!!!!...",
-]
+  
+  const isLoadingQuotes = [
+    "Let the wookie win...",
+    "That's no moon, its a space station...",
+    "Shut him up or shut him down...",
+    "May the force be with you, always...",
+    "When 900 years old you reach, look as good you will not, hmmmm?....",
+    "Trust your feelings...",
+    "OOO Tini!!!!!...",
+  ]
 
 useEffect(() => {
-   
+  let pageNumber = 1;
   const fetchCharacterData = async () => {
-    const response = await axios(`https://swapi.dev/api/people/`);
+    while( pageNumber < 10) {
+    const response = await axios(`https://swapi.dev/api/people/?search=&page=${pageNumber}`);
     console.log(response)
     const characterData = response.data.results;
       characterData.forEach( async (character) => {
@@ -31,8 +30,9 @@ useEffect(() => {
         setCharacter(characters => [...characters, character])
     }) 
     setIsLoading(false)
+    pageNumber++
+   }
   }
-  
   fetchCharacterData()
 },[]);
 
@@ -50,6 +50,7 @@ const getSpeciesName = async (character) => {
   return character.species.data.name
   }
 }
+
 
 
     return (

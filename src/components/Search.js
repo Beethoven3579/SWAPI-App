@@ -8,6 +8,7 @@ const Search = () => {
    
     const searchCharacter = async () => {
       const response = await axios.get(`https://swapi.dev/api/people/?search=${text}`);
+      
       console.log(response)
     };
 
