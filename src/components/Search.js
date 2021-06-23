@@ -9,7 +9,7 @@ const Search = () => {
     const searchCharacter = async () => {
       const response = await axios.get(`https://swapi.dev/api/people/?search=${text}`);
       
-      console.log(response)
+      // console.log(response)
     };
 
     searchCharacter()
@@ -32,7 +32,6 @@ const Search = () => {
                     />
                 </div>
             </div>
-
             <div className="row">
                 <div className="col-sm-6 offset-sm-3">
                     <button className="btn btn-warning">Search</button>
