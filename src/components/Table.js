@@ -31,9 +31,11 @@ const Table = ({ characters, isLoading }) => {
                     <th>{character.birth_year}</th>
                     <th>
                       {character.mass === "unknown" ? 
-                    "unknown" : character.mass + " kg"} 
+                      "unknown" : character.mass + " kg"} 
                     </th>
-                    <th>{character.height + " cm"}</th>
+                    <th>{character.height === "unknown" ?
+                     "unknown" : character.height + " cm"}
+                     </th>
                     <th>{character.homeworld}</th>
                     <th>{character.species}</th>
                   </tr>
