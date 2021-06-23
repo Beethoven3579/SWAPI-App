@@ -8,7 +8,7 @@ const Pagination = ({charactersPerPage, totalCharacters, paginate}) => {
     }
         return (
             <nav>
-                <ul className="pagination " >
+                <ul className="pagination text-warning">Page Selection :  
                     {pageNumbers.map((number) => ( 
                         <li key={number} className="page-item">
                             <a onClick={() => paginate(number)} href="!#" className="page-link">

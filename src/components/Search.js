@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Search = () => {
+const Search = ({characters}) => {
     const [text, setText] = useState('')
     
     useEffect(() => {
    
     const searchCharacter = async () => {
       const response = await axios.get(`https://swapi.dev/api/people/?search=${text}`);
+    
+      // return (
+      //   <div>
+      //  <tbody>
+      //    {characters.map((character, index) => (
+      //      <tr>
+      //        <th>{character.name}</th>
+      //        <th>{character.birth_year}</th>
+      //        <th>{character.name}</th>
+      //        </tr>
+          
+      //    ))}
+         
+      //  </tbody>
+      //   </div>
+      // )
       
-      // console.log(response)
     };
 
     searchCharacter()
@@ -32,11 +47,11 @@ const Search = () => {
                     />
                 </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
                 <div className="col-sm-6 offset-sm-3">
                     <button className="btn btn-warning">Search</button>
                 </div>
-             </div>
+             </div> */}
           </form>
        
         </div>

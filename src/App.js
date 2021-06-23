@@ -25,6 +25,7 @@ useEffect(() => {
         character.homeworld = await getHomeWorld(character);
         character.species = await getSpeciesName(character);
         setCharacter(characters => [...characters, character])
+        
     }) 
     setIsLoading(false)
     pageNumber++
@@ -33,7 +34,6 @@ useEffect(() => {
   fetchCharacterData()
 },[]);
 
-// console.log(characters)
 
 const getHomeWorld = async (character) => {
   character.homeworld = await axios.get(character.homeworld);
@@ -60,7 +60,7 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
     <div className="App">
 
      <Header />
-     <Search />
+     <Search characters={characters}/>
      <Table 
       characters={currentCharacters} 
       isLoading={isLoading}
