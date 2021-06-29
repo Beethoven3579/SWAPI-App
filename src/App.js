@@ -13,6 +13,7 @@ const App = ( ) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersPerPage] = useState(10);
   
+  
 useEffect(() => {
   let pageNumber = 1;
 
