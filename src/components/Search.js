@@ -5,20 +5,12 @@ const Search = ({characters}) => {
   const [text, setText] = useState('')
     useEffect(() => {
    console.log(text)
-    // const searchCharacter = async () => {
-    //   const response = await axios.get(`https://swapi.dev/api/people/?search=${text}`);
-    //   const characterData = response.data.results
-      
-      // characters.filter(character => {
-      //   if (character.name.match(text)) {
-      //     console.log(character.name)
-          
-      //   }
-      // })
-  
-    // };
-
-    // searchCharacter()
+   
+      characters.filter(character => {
+        if (character.name.toLowerCase().match(text.toLowerCase())) {
+          console.log(character.name) 
+        }
+     })
 
   });
 
